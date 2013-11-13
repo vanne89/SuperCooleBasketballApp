@@ -19,7 +19,15 @@
 		</nav>
 		<div class="row">
 			<div class="col-md-offset-2 col-md-8" ng-controller="ScheduleListController">
-				{{loadGames()}}
+			<table class="table table-striped">
+				<tr><th>Date</th><th></th><th></th><th></th></tr>
+				<tr ng-repeat = "game in games">
+					<td>{{game.date  | date:'EEE d MMM HH:mm'}}</td>
+					<td>{{game.team_1}}</td>
+					<td>vs.</td>
+					<td>{{game.team_2}}</td>
+				</tr>
+			</table>
 			</div>
 		</div>	
 		
