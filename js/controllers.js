@@ -1,5 +1,8 @@
-var scoreApp = angular.module('scoreApp', []);
- 
+var scoreApp = angular.module('scoreApp', []).
+	config(function($routeProvider){
+		$routeProvider.when("/", {templateUrl:"/partials/schedule.html"});
+	});
+
 scoreApp.controller('ScheduleListController', function ScheduleListController($scope, $http) {
  
 	var accessToken = '82996312dc';
@@ -25,7 +28,7 @@ for (var i = 0; i < strippedData.length; i++) {
 
 	$scope.games.push(game);
 };
- console.log(games);
+ console.log($scope.games);
 
 
   }).
