@@ -7,6 +7,7 @@ var scoreApp = angular.module('scoreApp', []).
             when('/home', {templateUrl: 'partials/home.html', controller: 'HomeCtrl'}).
             otherwise({redirectTo: '/home'});
     })
+
 //controllers per pagina//
 .controller('HomeCtrl', ['$scope', 'StateService', function ($scope, StateService) {
         $scope.title = 'Home';
@@ -40,7 +41,9 @@ var scoreApp = angular.module('scoreApp', []).
 
         $scope.updateMessage = function (m) {
             StateService.setMessage(m);
-        };
+
+        
+        };        
     }])
 
 .controller('RankingCtrl', ['$scope', 'StateService', function ($scope, StateService) {
@@ -54,7 +57,7 @@ var scoreApp = angular.module('scoreApp', []).
         };
     }])
 
-    .factory('StateService', function () {
+.factory('StateService', function () {
         var message = 'Hello Message';
         var getMessage = function() {
             return message;
@@ -69,60 +72,37 @@ var scoreApp = angular.module('scoreApp', []).
         }
     });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-scoreApp.controller('ScheduleListController', function ScheduleListController($scope, $http) {
+scoreApp.controller('ScheduleListController', function ScheduleListController($scope) {
  
-	var accessToken = '82996312dc';
-	var tournamentID = '19389';
-	
-	$scope.games = [];
-
- 
-	var jsonRequestURL = 'https://api.leaguevine.com/v1/games/?tournament_id='+ tournamentID +'&access_token=' + accessToken;
-	console.log(jsonRequestURL);
-$http({method: 'GET', url: jsonRequestURL}).
-  success(function(data, status, headers, config) {
- console.log(data.objects);
- var strippedData = data.objects;
-for (var i = 0; i < strippedData.length; i++) {
-	var game = [];
-	game.date = strippedData[i].start_time;
-	game.team_1 = strippedData[i].team_1.name;
-	game.team_2 = strippedData[i].team_2.name;
+    var accessToken = '82996312dc';
+    var tournamentID = '19389';
 
 
-	console.log(game.date + "  " + game.team_1 + " vs. " + game.team_2);
-
-	$scope.games.push(game);
-};
- console.log($scope.games);
+    $scope.loadGames = function(){
+        console.log("functie is bereikt");
+        
 
 
-  }).
-  error(function(data, status, headers, config) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-  });
+         var jsonRequestURL = 'https://api.leaguevine.com/v1/games/?tournament_id='+ tournamentID +'&access_token=' + accessToken;
+         console.log(jsonRequestURL);
+         $http.get(jsonRequestURL).then(function(response) {
+        console.log(response);
+         });
+    };
 
 
 
 
 
-});
+
+
+
+
+
+
+
+
+
 
 
 
