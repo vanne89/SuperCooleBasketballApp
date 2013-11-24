@@ -1,10 +1,39 @@
-<section class="col-md-offset-2 col-md-8">
-	<div class="page-header">
-		<h1>{{game.team_1}}-{{game.team_2}}</h1>
-		<h2>{{game.score_team_1}}-{{game.score_team_2}}</h2>
-		<a href="###">edit score</a>
-	<div>
-</section>
+<div class="col-md-offset-2 col-md-8">
+	
+		<row>
+			<div class="col-md-3">{{team_1}}</div>
+			<div class="col-md-2">{{score_team_1}}</div>
+			<div class="col-md-2">VS.</div>
+			<div class="col-md-2">{{score_team_2}}</div>
+			<div class="col-md-3">{{team_2}}</div>
+		</row>
+		<row>
+			<div class="col-md-3"></div>
+			<div class="col-md-2">
+				<button type="button" class="btn btn-default btn-lg" ng-click="addScoreTeam1()">
+				<span class="glyphicon glyphicon-plus"></span> 
+			</button>
+			<button type="button" class="btn btn-default btn-lg" ng-click="removeScoreTeam1()">
+				<span class="glyphicon glyphicon-minus"></span> 
+			</button>
+		</div>
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-2">	
+				<button type="button" class="btn btn-default btn-lg" ng-click="addScoreTeam2()">
+					<span class="glyphicon glyphicon-plus"></span> 
+				</button>
+				<button type="button" class="btn btn-default btn-lg" ng-click="removeScoreTeam2()">
+					<span class="glyphicon glyphicon-minus"></span> 
+				</button>
+			</div>
+				<div class="col-md-3">
+				</div>
+
+			</row>	
+
+		
+</div>
 
 
 <!--
