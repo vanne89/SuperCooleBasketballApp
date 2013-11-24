@@ -1,20 +1,19 @@
-<section class="col-md-offset-2 col-md-8" ng-controller="###">
+<section class="col-md-offset-2 col-md-8">
 		<table class="table table-striped">
+		<h1>Ranking</h1>
 		<thead>
 			<tr>
-				<th>Nr.</th>
 				<th>Team</th>
 				<th>PW</th>
 				<th>PL</th>
 			</tr>
 		</thead>
 
-		<tr ng-repeat = "###">
+		<tr ng-repeat = "team  in ranking">
 			<tbody>
-				<td>{{ranking.number}}</td><!--Kan dit makkelijker?-->
-				<td>{{ranking.team}}</td>
-				<td>{{ranking.wins}}</td>
-				<td>{{ranking.lost}}</td>
+				<td>{{team.team_name}}</td>
+				<td>{{team.wins}}</td>
+				<td>{{team.lost}}</td>
 			</tbody>	
 		</tr>
 	</table>
