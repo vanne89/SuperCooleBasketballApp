@@ -8,20 +8,19 @@
 				<th>PL</th>
 			</tr>
 		</thead>
-
-		<tr ng-repeat = "team  in ranking">
-			<tbody>
+		<tbody>
+		<tr ng-repeat = "team in ranking">
 				<td>{{team.team_name}}</td>
 				<td>{{team.wins}}</td>
 				<td>{{team.lost}}</td>
-			</tbody>	
 		</tr>
+	</tbody>
 	</table>
 </section>
 
 <!-- 
-	ng-controller een naam geven
-	ng-repeat een naam geven
-	ranking.number
-	ranking.wins
-	ranking.lost -->
+	team.number
+	team.wins
+	team.lost
+
+			<script data-pace-options='{ "ajax": false }' src='lib/pace.min.js'></script> -->
