@@ -22,12 +22,11 @@ scoreApp.controller('HomeCtrl', ['$scope', function ($scope) {
 //GAME CONTROLLER
 scoreApp.controller('GameCtrl', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http){
     $scope.team_1 = "Loading..";
-    $scope.team_2 = "Loading.."
+    $scope.team_2 = ".."
     $scope.score_team_1 = "..";
-    $scope.score_team_2 = "..";
+    $scope.score_team_2 = "Loading..";
 
-        var jsonRequestURL = 'https://api.leaguevine.com/v1/game/'+$routeParams.id+'/?access_token=' + accessToken;
-
+        var jsonRequestURL = 'https://api.leaguevine.com/v1/games/'+$routeParams.id+'/?access_token=aff85a4283';
         $http({method: 'GET', url: jsonRequestURL}).
         success(function(data, status, headers, config) {
             console.log(data);
@@ -94,6 +93,7 @@ scoreApp.controller('GamesCtrl', ['$scope', '$http', '$location', function ($sco
        
         var jsonRequestURL = 'https://api.leaguevine.com/v1/games/?tournament_id='+ tournamentID +'&limit=50&access_token=' + accessToken;
         $http({method: 'GET', url: jsonRequestURL}).
+        
         success(function(data, status, headers, config) {
          var strippedData = data.objects;
         for (var i = 0; i < strippedData.length; i++) {
@@ -128,7 +128,7 @@ scoreApp.controller('RulesCtrl', ['$scope', function ($scope) {
 //SCHEDULE CONTROLLER
 scoreApp.controller('ScheduleCtrl', function ScheduleListController($scope, $http) {
  
-        $scope.loadingGif = '<img src="img/loading.GIF"> </img>';    
+
         $scope.games = [];
 
         var jsonRequestURL = 'https://api.leaguevine.com/v1/games/?tournament_id='+ tournamentID +'&limit=50&access_token=' + accessToken;
