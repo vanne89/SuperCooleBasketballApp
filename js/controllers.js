@@ -46,19 +46,20 @@ scoreApp.controller('GameCtrl', ['$scope', '$routeParams', '$http', function ($s
       $scope.addScoreTeam2 = function(){$scope.score_team_2++; updateScores();};
       $scope.removeScoreTeam1 = function(){$scope.score_team_1--; updateScores();};
       $scope.removeScoreTeam2 = function(){$scope.score_team_2--; updateScores();};
-
+      $scope.finalize = function(){$scope.is_final = true;  updateScores();};
+     
      function updateScores(){
         var post = [];
         post.game_id = $routeParams.id;
         post.team_1_score = $scope.score_team_1;
         post.team_2_score = $scope.score_team_2;
-        post.is_final = false;
+        post.is_final = $scope.is_final;
 
 
         var url = 'https://api.leaguevine.com/v1/game_scores/?access_token=' + accessToken + '?callback?';
         $http.post(url , post, {headers: {'Authorization': 'bearer ' + accessToken}}).success(
                         function(){
-                            alert('gepost ouwe!!');
+                            alert('gepost!!');
                         }
 
                     );
