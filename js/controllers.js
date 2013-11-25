@@ -27,6 +27,7 @@ scoreApp.controller('GameCtrl', ['$scope', '$routeParams', '$http', function ($s
     $scope.score_team_2 = "Loading..";
 
         var jsonRequestURL = 'https://api.leaguevine.com/v1/games/'+$routeParams.id+'/?access_token=aff85a4283';
+
         $http({method: 'GET', url: jsonRequestURL}).
         success(function(data, status, headers, config) {
             console.log(data);
@@ -71,10 +72,10 @@ scoreApp.controller('RankingCtrl', ['$scope', '$http', '$location', function ($s
         var jsonRequestURL = 'https://api.leaguevine.com/v1/pools/?tournament_id='+ tournamentID +'&name=a&limit=50&access_token=' + accessToken;
         $http({method: 'GET', url: jsonRequestURL}).
         success(function(data, status, headers, config) {
-         var strippedData = data.objects;
+         var strippedData = data.objects[0].standings;
         for (var i = 0; i < strippedData.length; i++) {
         var team = [];
-        team_name = strippedData[i].name;
+        team.team_name = strippedData[i].team.name;
         team.wins = strippedData[i].wins;
         team.lost = strippedData[i].losses;
 
@@ -90,10 +91,9 @@ scoreApp.controller('RankingCtrl', ['$scope', '$http', '$location', function ($s
 //GAMES CONTROLLER
 scoreApp.controller('GamesCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
         $scope.games = [];
-       
-        var jsonRequestURL = 'https://api.leaguevine.com/v1/games/?tournament_id='+ tournamentID +'&limit=50&access_token=' + accessToken;
+       https://api.leaguevine.com/v1/games/?tournament_id=19389&pool_id=19219&access_token=d3f496594b
+        var jsonRequestURL = 'https://api.leaguevine.com/v1/games/?tournament_id='+ tournamentID +'&pool_id=19219&limit=50&access_token=' + accessToken;
         $http({method: 'GET', url: jsonRequestURL}).
-        
         success(function(data, status, headers, config) {
          var strippedData = data.objects;
         for (var i = 0; i < strippedData.length; i++) {
@@ -128,10 +128,10 @@ scoreApp.controller('RulesCtrl', ['$scope', function ($scope) {
 //SCHEDULE CONTROLLER
 scoreApp.controller('ScheduleCtrl', function ScheduleListController($scope, $http) {
  
-
+        $scope.loadingGif = '<img src="img/loading.GIF"> </img>';    
         $scope.games = [];
 
-        var jsonRequestURL = 'https://api.leaguevine.com/v1/games/?tournament_id='+ tournamentID +'&limit=50&access_token=' + accessToken;
+        var jsonRequestURL = 'https://api.leaguevine.com/v1/games/?tournament_id='+ tournamentID +'&pool_id=19219&limit=50&access_token=' + accessToken;
         $http({method: 'GET', url: jsonRequestURL}).
         success(function(data, status, headers, config) {
   
